@@ -1,24 +1,25 @@
 import statistics
 class TextInfo:
 
-    text = ""
-    sentences = []
-    sentence_count = 0
-    dictionary = {}
-    word_count = 0
-    word_in_sentence_count = []
-    average_word_amount = 0
-    median_word_amount = 0
-    n_grams = {}
 
     def __init__(self):
+        
+        self.text = ""
+        self.sentences = []
+        self.sentence_count = 0
+        self.dictionary = {}
+        self.word_count = 0
+        self.word_in_sentence_count = []
+        self.average_word_amount = 0
+        self.median_word_amount = 0
+        self.n_grams = {}
+        
         self.text_input()
         self.split_into_sentences()
         self.split_into_words()
         self.average_word_amount = self.word_count/self.sentence_count
         self.median_word_amount = statistics.median(self.word_in_sentence_count)
         self.n_gram()
-
 
 
     def text_input(self):
@@ -56,7 +57,7 @@ class TextInfo:
         n = int(input("Enter n for n-gram:"))
         temp_text = self.text.replace(' ', '')
         temp_list = []
-        while i <= (len(temp_text) - n):
+        while i <= len(temp_text) - n:
             temp_list.append(temp_text[i:i+n])
             i += 1
         for g in temp_list:
